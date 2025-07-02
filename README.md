@@ -27,7 +27,8 @@
 ### 회원(Member)
 _Entity_
 #### 속성
-- email : 이메일 ID
+- id : Long
+- email : 이메일 ID - Natural ID
 - nickname : 닉네임
 - passwordHash : 비밀번호 해시
 - status : 상태
@@ -51,6 +52,9 @@ _Enum_
 - PENDING : 등록 대기
 - ACTIVE : 등록 완료
 - DEACTIVATED : 탈퇴
+
+### DuplicateEmailException
+_Exception_
 
 ### 패스워드 인코더(Password Encoder)
 _Domain Service_
