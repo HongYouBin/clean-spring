@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.*;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static tobyspring.splean.domain.MemberFixture.*;
 
 class MemberTest {
     private Member member;
@@ -12,31 +13,19 @@ class MemberTest {
 
     @BeforeEach
     void init() {
-        passwordEncoder = new PasswordEncoder() {
-            @Override
-            public String encode(String password) {
-                return password.toUpperCase();
-            }
-
-            @Override
-            public boolean matches(String password, String passwordHash) {
-                return encode(password).equals(passwordHash);
-            }
-        };
-
-        member = Member.create(new MemberCreateRequest("test@email.com", "chulso", "password"), passwordEncoder);
+        this.passwordEncoder = createPasswordEncoder();
+        member = Member.register(createMemberRegisterRequest(), this.passwordEncoder);
     }
 
     @Test
     void construct_test() {
-        assertThat(member.getEmail().address()).isEqualTo("test@email.com");
         assertThat(member.getStatus()).isEqualTo(MemberStatus.PENDING);
-        assertThat(member.getPasswordHash()).isEqualTo("PASSWORD");
+        assertThat(member.getPasswordHash()).isEqualTo("SECRET");
     }
 
     @Test
     void construct_fail() {
-        assertThatThrownBy(() -> Member.create(new MemberCreateRequest(null, "chulso", "password"), passwordEncoder))
+        assertThatThrownBy(() -> Member.register(new MemberRegisterRequest(null, "chulso", "password"), passwordEncoder))
                 .isInstanceOf(NullPointerException.class);
     }
 
@@ -77,7 +66,7 @@ class MemberTest {
 
     @Test
     void verifyPassword_success() {
-        assertThat(member.verifyPassword("password", passwordEncoder)).isTrue();
+        assertThat(member.verifyPassword("secret", passwordEncoder)).isTrue();
     }
 
     @Test
@@ -95,7 +84,7 @@ class MemberTest {
 
     @Test
     void email_exception() {
-        assertThatThrownBy(() -> Member.create(new MemberCreateRequest("toby", "hihi", "pwd"), passwordEncoder))
+        assertThatThrownBy(() -> Member.register(new MemberRegisterRequest("toby", "hihi", "pwd"), passwordEncoder))
                 .isInstanceOf(IllegalArgumentException.class);
     }
 }
