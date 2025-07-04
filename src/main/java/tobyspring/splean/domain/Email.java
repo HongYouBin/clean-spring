@@ -11,8 +11,8 @@ public record Email(String address) {
     );
 
     public Email {
-        if(!EMAIL_PATTERN.matcher(address).matches()) {
-            throw new IllegalArgumentException("유요하지 않은 이메일 형태입니다.");
-        }
+//        if(!EMAIL_PATTERN.matcher(address).matches()) {
+//            throw new IllegalArgumentException("유요하지 않은 이메일 형태입니다.");
+//        }
     }
 }
