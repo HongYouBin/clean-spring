@@ -5,6 +5,7 @@ import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
+import tobyspring.splean.application.provided.MemberFinder;
 import tobyspring.splean.application.provided.MemberRegister;
 import tobyspring.splean.application.required.EmailSender;
 import tobyspring.splean.application.required.MemberRepository;
@@ -14,10 +15,11 @@ import tobyspring.splean.domain.*;
 @AllArgsConstructor
 @Transactional
 @Validated
-public class MemberService implements MemberRegister {
+public class MemberModifyService implements MemberRegister {
     private final EmailSender emailSender;
     private final MemberRepository memberRepository;
     private final PasswordEncoder passwordEncoder;
+    private final MemberFinder memberFinder;
 
     @Override
     public Member register(@Valid MemberRegisterRequest registerRequest) {
@@ -30,6 +32,15 @@ public class MemberService implements MemberRegister {
         sendWelcomEmail(member);
 
         return member;
+    }
+
+    @Override
+    public Member activate(Long memberId) {
+        Member member = memberFinder.find(memberId);
+
+        member.activate();
+
+        return memberRepository.save(member);
     }
 
     private void sendWelcomEmail(Member member) {

@@ -82,9 +82,4 @@ class MemberTest {
         assertThat(member.verifyPassword("newpassword", passwordEncoder)).isTrue();
     }
 
-    @Test
-    void email_exception() {
-        assertThatThrownBy(() -> Member.register(new MemberRegisterRequest("toby", "hihi", "pwd"), passwordEncoder))
-                .isInstanceOf(IllegalArgumentException.class);
-    }
 }

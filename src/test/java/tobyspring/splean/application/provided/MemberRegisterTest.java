@@ -1,5 +1,6 @@
 package tobyspring.splean.application.provided;
 
+import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
@@ -16,7 +17,7 @@ import static org.assertj.core.api.Assertions.*;
 @SpringBootTest
 @Transactional
 @Import(SplearnTestConfiguration.class)
-public record MemberRegisterTest(MemberRegister memberRegister) {
+public record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
 
     @Test
     void register() {
@@ -46,4 +47,17 @@ public record MemberRegisterTest(MemberRegister memberRegister) {
                 .isInstanceOf(ConstraintViolationException.class);
     }
 
+    @Test
+    void activate_success() {
+        Member member = memberRegister.register(MemberFixture.createMemberRegisterRequest());
+
+        assertThat(member.getStatus()).isEqualTo(MemberStatus.PENDING);
+        entityManager.flush();
+        entityManager.clear();
+
+        Member activatedMember = memberRegister.activate(member.getId());
+        entityManager.flush();
+
+        assertThat(activatedMember.getStatus()).isEqualTo(MemberStatus.ACTIVATE);
+    }
 }

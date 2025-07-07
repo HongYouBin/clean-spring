@@ -1,2 +1,4 @@
 spring:
-  application.name:splean
+  application.name: splean
+  jpa:
+    show-sql:true
