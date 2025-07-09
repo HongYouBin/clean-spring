@@ -3,9 +3,10 @@ package tobyspring.splean.domain;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static tobyspring.splean.domain.MemberFixture.*;
+import static tobyspring.splean.domain.MemberFixture.createMemberRegisterRequest;
+import static tobyspring.splean.domain.MemberFixture.createPasswordEncoder;
 
 class MemberTest {
     private Member member;

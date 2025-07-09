@@ -2,22 +2,19 @@ package tobyspring.splean.application.provided;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
-import jakarta.validation.ConstraintViolation;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Import;
-import org.springframework.test.context.TestConstructor;
 import tobyspring.splean.domain.*;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 @Transactional
 @Import(SplearnTestConfiguration.class)
-public record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
+record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
 
     @Test
     void register() {
@@ -37,12 +34,12 @@ public record MemberRegisterTest(MemberRegister memberRegister, EntityManager en
 
     @Test
     void memberRequest_valid_fail() {
-        extracted(new MemberRegisterRequest("toby.com", "toby", "secrets"));
-        extracted(new MemberRegisterRequest("toby.com", "toby000000000000000000", "secrets"));
+        checkValidation(new MemberRegisterRequest("toby.com", "toby", "secrets"));
+        checkValidation(new MemberRegisterRequest("toby.com", "toby000000000000000000", "secrets"));
 
     }
 
-    private void extracted(MemberRegisterRequest memberRegisterRequest) {
+    private void checkValidation(MemberRegisterRequest memberRegisterRequest) {
         assertThatThrownBy(() -> memberRegister.register(memberRegisterRequest))
                 .isInstanceOf(ConstraintViolationException.class);
     }

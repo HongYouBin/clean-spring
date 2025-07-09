@@ -2,7 +2,6 @@ package tobyspring.splean.application;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import tobyspring.splean.application.provided.MemberFinder;

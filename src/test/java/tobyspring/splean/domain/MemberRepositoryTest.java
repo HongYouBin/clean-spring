@@ -1,15 +1,16 @@
 package tobyspring.splean.domain;
 
 import jakarta.persistence.EntityManager;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.dao.DataIntegrityViolationException;
 import tobyspring.splean.application.required.MemberRepository;
 
-import static org.assertj.core.api.Assertions.*;
-import static tobyspring.splean.domain.MemberFixture.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static tobyspring.splean.domain.MemberFixture.createMemberRegisterRequest;
+import static tobyspring.splean.domain.MemberFixture.createPasswordEncoder;
 
 @DataJpaTest
 public class MemberRepositoryTest {
