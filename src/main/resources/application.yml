@@ -2,3 +2,5 @@ spring:
   application.name: splean
   jpa:
     show-sql:true
+  hibernate:
+    ddl-atuo: update
