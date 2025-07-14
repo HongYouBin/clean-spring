@@ -1,6 +1,7 @@
 spring:
   application.name: splean
   jpa:
-    show-sql:true
-  hibernate:
-    ddl-atuo: update
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+
