@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 @SpringBootTest
 @Transactional
-@Import(SplearnTestConfiguration.class)
+//@Import(SplearnTestConfiguration.class)
 record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityManager) {
 
     @Test

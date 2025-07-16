@@ -5,6 +5,14 @@
                                      https://jakarta.ee/xml/ns/persistence/orm_3_0.xsd"
                  version="3.0">
 
+    <mapped-superclass class="tobyspring.splean.domain.AbstractEntity">
+        <attributes>
+            <id name="id">
+                <generated-value strategy="IDENTITY"/>
+            </id>
+        </attributes>
+    </mapped-superclass>
+
     <entity class="tobyspring.splean.domain.Member">
         <table name="MEMBER">
             <unique-constraint name="UK_MEMBER_EMAIL_ADDRESS">
