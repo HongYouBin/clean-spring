@@ -2,6 +2,10 @@ package tobyspring.splean.domain;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import tobyspring.splean.domain.member.Member;
+import tobyspring.splean.domain.member.MemberRegisterRequest;
+import tobyspring.splean.domain.member.MemberStatus;
+import tobyspring.splean.domain.member.PasswordEncoder;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

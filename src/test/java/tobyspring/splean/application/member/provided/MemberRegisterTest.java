@@ -5,8 +5,11 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import tobyspring.splean.domain.*;
+import tobyspring.splean.domain.member.DuplicateEmailException;
+import tobyspring.splean.domain.member.Member;
+import tobyspring.splean.domain.member.MemberRegisterRequest;
+import tobyspring.splean.domain.member.MemberStatus;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 import tobyspring.splean.application.provided.MemberFinder;
 import tobyspring.splean.application.required.MemberRepository;
-import tobyspring.splean.domain.Member;
+import tobyspring.splean.domain.member.Member;
 
 @Service
 @AllArgsConstructor

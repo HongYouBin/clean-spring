@@ -4,7 +4,7 @@ import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import tobyspring.splean.domain.Member;
+import tobyspring.splean.domain.member.Member;
 import tobyspring.splean.domain.MemberFixture;
 
 import static org.assertj.core.api.Assertions.assertThat;

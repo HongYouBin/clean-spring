@@ -1,8 +1,8 @@
 package tobyspring.splean.application.required;
 
 import org.springframework.data.repository.Repository;
-import tobyspring.splean.domain.Email;
-import tobyspring.splean.domain.Member;
+import tobyspring.splean.domain.shared.Email;
+import tobyspring.splean.domain.member.Member;
 
 import java.util.Optional;
 

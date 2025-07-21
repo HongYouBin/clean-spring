@@ -26,6 +26,8 @@
 
         private MemberStatus status;
 
+        private MemberDetail detail;
+
         public void activate() {
             Assert.state(this.status == MemberStatus.PENDING, "가입 대기중인 상태에서만 가입 완료가 가능합니다.");
 

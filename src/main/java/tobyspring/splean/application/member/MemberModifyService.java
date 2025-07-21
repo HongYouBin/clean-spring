@@ -9,7 +9,11 @@ import tobyspring.splean.application.provided.MemberFinder;
 import tobyspring.splean.application.provided.MemberRegister;
 import tobyspring.splean.application.required.EmailSender;
 import tobyspring.splean.application.required.MemberRepository;
-import tobyspring.splean.domain.*;
+import tobyspring.splean.domain.member.DuplicateEmailException;
+import tobyspring.splean.domain.member.Member;
+import tobyspring.splean.domain.member.MemberRegisterRequest;
+import tobyspring.splean.domain.member.PasswordEncoder;
+import tobyspring.splean.domain.shared.Email;
 
 @Service
 @AllArgsConstructor

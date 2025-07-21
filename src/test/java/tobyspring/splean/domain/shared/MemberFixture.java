@@ -1,5 +1,8 @@
 package tobyspring.splean.domain;
 
+import tobyspring.splean.domain.member.MemberRegisterRequest;
+import tobyspring.splean.domain.member.PasswordEncoder;
+
 public class MemberFixture {
     public static MemberRegisterRequest createMemberRegisterRequest(String email) {
         return new MemberRegisterRequest(email, "toby", "secret");
