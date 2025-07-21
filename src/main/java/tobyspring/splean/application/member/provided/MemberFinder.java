@@ -1,4 +1,4 @@
-package tobyspring.splean.application.provided;
+package tobyspring.splean.application.member.provided;
 
 import tobyspring.splean.domain.member.Member;
 

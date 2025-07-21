@@ -1,4 +1,4 @@
-package tobyspring.splean.domain;
+package tobyspring.splean.domain.shared;
 
 import java.util.regex.Pattern;
 

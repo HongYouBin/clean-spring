@@ -1,11 +1,11 @@
-package tobyspring.splean.application.provided;
+package tobyspring.splean.application.member.provided;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import tobyspring.splean.domain.member.Member;
-import tobyspring.splean.domain.MemberFixture;
+import tobyspring.splean.domain.shared.MemberFixture;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;

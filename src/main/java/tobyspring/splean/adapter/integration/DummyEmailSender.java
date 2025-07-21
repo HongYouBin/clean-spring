@@ -2,8 +2,8 @@ package tobyspring.splean.adapter.integration;
 
 import org.springframework.context.annotation.Fallback;
 import org.springframework.stereotype.Component;
-import tobyspring.splean.application.required.EmailSender;
-import tobyspring.splean.domain.Email;
+import tobyspring.splean.application.member.required.EmailSender;
+import tobyspring.splean.domain.shared.Email;
 
 @Component
 @Fallback

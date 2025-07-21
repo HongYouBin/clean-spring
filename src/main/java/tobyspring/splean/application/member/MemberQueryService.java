@@ -1,11 +1,11 @@
-package tobyspring.splean.application;
+package tobyspring.splean.application.member;
 
 import jakarta.transaction.Transactional;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import tobyspring.splean.application.provided.MemberFinder;
-import tobyspring.splean.application.required.MemberRepository;
+import tobyspring.splean.application.member.provided.MemberFinder;
+import tobyspring.splean.application.member.required.MemberRepository;
 import tobyspring.splean.domain.member.Member;
 
 @Service

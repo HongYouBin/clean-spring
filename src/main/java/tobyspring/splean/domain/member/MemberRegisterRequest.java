@@ -1,4 +1,4 @@
-package tobyspring.splean.domain;
+package tobyspring.splean.domain.member;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;

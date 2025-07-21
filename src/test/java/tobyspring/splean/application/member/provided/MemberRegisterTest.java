@@ -1,15 +1,15 @@
-package tobyspring.splean.application.provided;
+package tobyspring.splean.application.member.provided;
 
 import jakarta.persistence.EntityManager;
 import jakarta.transaction.Transactional;
 import jakarta.validation.ConstraintViolationException;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import tobyspring.splean.domain.*;
 import tobyspring.splean.domain.member.DuplicateEmailException;
 import tobyspring.splean.domain.member.Member;
 import tobyspring.splean.domain.member.MemberRegisterRequest;
 import tobyspring.splean.domain.member.MemberStatus;
+import tobyspring.splean.domain.shared.MemberFixture;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
@@ -25,6 +25,7 @@ record MemberRegisterTest(MemberRegister memberRegister, EntityManager entityMan
 
         assertThat(member.getId()).isNotNull();
         assertThat(member.getStatus()).isEqualTo(MemberStatus.PENDING);
+        assertThat(member.getDetail().getRegisteredAt()).isNotNull();
     }
 
     @Test

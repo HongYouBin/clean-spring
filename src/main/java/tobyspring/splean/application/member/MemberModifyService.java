@@ -1,14 +1,14 @@
-package tobyspring.splean.application;
+package tobyspring.splean.application.member;
 
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
-import tobyspring.splean.application.provided.MemberFinder;
-import tobyspring.splean.application.provided.MemberRegister;
-import tobyspring.splean.application.required.EmailSender;
-import tobyspring.splean.application.required.MemberRepository;
+import tobyspring.splean.application.member.provided.MemberFinder;
+import tobyspring.splean.application.member.provided.MemberRegister;
+import tobyspring.splean.application.member.required.EmailSender;
+import tobyspring.splean.application.member.required.MemberRepository;
 import tobyspring.splean.domain.member.DuplicateEmailException;
 import tobyspring.splean.domain.member.Member;
 import tobyspring.splean.domain.member.MemberRegisterRequest;

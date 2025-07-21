@@ -13,7 +13,7 @@
         </attributes>
     </mapped-superclass>
 
-    <entity class="tobyspring.splean.domain.Member">
+    <entity class="tobyspring.splean.domain.member.Member">
         <table name="MEMBER">
             <unique-constraint name="UK_MEMBER_EMAIL_ADDRESS">
                 <column-name>email_address</column-name>
@@ -38,7 +38,7 @@
         </attributes>
     </entity>
 
-    <embeddable class="tobyspring.splean.domain.Email">
+    <embeddable class="tobyspring.splean.domain.shared.Email">
         <attributes>
             <basic name="address">
                 <column name="email_address" length="150" nullable="false"/>

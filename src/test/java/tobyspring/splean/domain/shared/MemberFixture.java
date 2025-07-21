@@ -1,4 +1,4 @@
-package tobyspring.splean.domain;
+package tobyspring.splean.domain.shared;
 
 import tobyspring.splean.domain.member.MemberRegisterRequest;
 import tobyspring.splean.domain.member.PasswordEncoder;

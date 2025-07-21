@@ -2,7 +2,7 @@ package tobyspring.splean.adapter.security;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
-import tobyspring.splean.domain.PasswordEncoder;
+import tobyspring.splean.domain.member.PasswordEncoder;
 
 @Component
 public class SecurityPasswordEncoder implements PasswordEncoder {

@@ -1,4 +1,4 @@
-package tobyspring.splean.domain;
+package tobyspring.splean.domain.member;
 
 public interface PasswordEncoder {
     String encode(String password);
