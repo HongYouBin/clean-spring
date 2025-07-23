@@ -31,7 +31,6 @@
 
         private MemberStatus status;
 
-        @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
         private MemberDetail detail;
 
         public void activate() {

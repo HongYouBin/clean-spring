@@ -9,10 +9,7 @@ import tobyspring.splean.application.member.provided.MemberFinder;
 import tobyspring.splean.application.member.provided.MemberRegister;
 import tobyspring.splean.application.member.required.EmailSender;
 import tobyspring.splean.application.member.required.MemberRepository;
-import tobyspring.splean.domain.member.DuplicateEmailException;
-import tobyspring.splean.domain.member.Member;
-import tobyspring.splean.domain.member.MemberRegisterRequest;
-import tobyspring.splean.domain.member.PasswordEncoder;
+import tobyspring.splean.domain.member.*;
 import tobyspring.splean.domain.shared.Email;
 
 @Service
@@ -43,6 +40,24 @@ public class MemberModifyService implements MemberRegister {
         Member member = memberFinder.find(memberId);
 
         member.activate();
+
+        return memberRepository.save(member);
+    }
+
+    @Override
+    public Member deactivate(Long memberId) {
+        Member member = memberFinder.find(memberId);
+
+        member.deactivate();
+
+        return memberRepository.save(member);
+    }
+
+    @Override
+    public Member updateInfo(Long memberId, MemberUpdateRequest updateRequest) {
+        Member member = memberFinder.find(memberId);
+
+        member.updateInfo(updateRequest);
 
         return memberRepository.save(member);
     }

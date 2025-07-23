@@ -5,3 +5,7 @@ spring:
     hibernate:
       ddl-auto: create
 
+  docker:
+    compose:
+      lifecycle-management: start_only
+

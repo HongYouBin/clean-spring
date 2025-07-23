@@ -1,8 +1,11 @@
 package tobyspring.splean.domain.member;
 
+import jakarta.persistence.Embeddable;
+
 import java.util.regex.Pattern;
 
-record Profile(String address) {
+@Embeddable
+public record Profile(String address) {
     private static final Pattern PROFILE_ADRRESS_PATTERN = Pattern.compile("[a-z0-9]+");
 
     public Profile {
