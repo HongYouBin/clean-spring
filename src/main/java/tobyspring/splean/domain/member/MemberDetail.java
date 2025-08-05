@@ -1,19 +1,14 @@
     package tobyspring.splean.domain.member;
 
-    import jakarta.persistence.Column;
-    import jakarta.persistence.Embedded;
     import jakarta.persistence.Entity;
     import lombok.AccessLevel;
     import lombok.Getter;
     import lombok.NoArgsConstructor;
     import lombok.ToString;
-    import org.springframework.security.core.parameters.P;
     import org.springframework.util.Assert;
     import tobyspring.splean.domain.AbstractEntity;
 
     import java.time.LocalDateTime;
-
-    import static java.util.Objects.requireNonNull;
 
     @Getter
     @Entity

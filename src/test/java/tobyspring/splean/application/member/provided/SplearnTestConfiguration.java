@@ -3,8 +3,8 @@ package tobyspring.splean.application.member.provided;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import tobyspring.splean.application.member.required.EmailSender;
-import tobyspring.splean.domain.shared.MemberFixture;
 import tobyspring.splean.domain.member.PasswordEncoder;
+import tobyspring.splean.domain.shared.MemberFixture;
 
 @TestConfiguration
 public class SplearnTestConfiguration {

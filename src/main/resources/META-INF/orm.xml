@@ -13,56 +13,13 @@
         </attributes>
     </mapped-superclass>
 
-    <entity class="tobyspring.splean.domain.member.Member">
-        <table name="MEMBER">
-            <unique-constraint name="UK_MEMBER_EMAIL_ADDRESS">
-                <column-name>email_address</column-name>
-            </unique-constraint>
-            <unique-constraint name="UK_MEMBER_DETAIL_ID">
-                <column-name>detail_id</column-name>
-            </unique-constraint>
-        </table>
-
-        <attributes>
-            <embedded name="email"/>
-
-            <basic name="nickname">
-                <column name="nickname" length="100" nullable="false"/>
-            </basic>
-
-            <basic name="passwordHash">
-                <column name="password_hash" length="200" nullable="false"/>
-            </basic>
-
-            <basic name="status">
-                <enumerated>STRING</enumerated>
-                <column name="status" length="50"/>
-            </basic>
-            <one-to-one name="detail" fetch="LAZY">
-                <cascade>
-                    <cascade-all/>
-                </cascade>
-            </one-to-one>
-        </attributes>
-    </entity>
-
-    <embeddable class="tobyspring.splean.domain.shared.Email">
-        <attributes>
-            <basic name="address">
-                <column name="email_address" length="150" nullable="false"/>
-            </basic>
-        </attributes>
-    </embeddable>
-
     <entity class="tobyspring.splean.domain.member.MemberDetail">
         <table name="member_detail">
             <unique-constraint name="UK_MEMBER_DETAIL_PROFILE_ADDRESS">
                 <column-name>profile_address</column-name>
             </unique-constraint>
-
         </table>
         <attributes>
-            <embedded name="profile"/>
             <basic name="introduction">
                 <column name="introduction" column-definition="TEXT"/>
             </basic>
@@ -75,8 +32,54 @@
             <basic name="deactivatedAt">
                 <column name="deactivated_at"/>
             </basic>
+            <embedded name="profile"/>
+
         </attributes>
     </entity>
+
+    <entity class="tobyspring.splean.domain.member.Member">
+        <table name="MEMBER">
+            <unique-constraint name="UK_MEMBER_EMAIL_ADDRESS">
+                <column-name>email_address</column-name>
+            </unique-constraint>
+            <unique-constraint name="UK_MEMBER_DETAIL_ID">
+                <column-name>detail_id</column-name>
+            </unique-constraint>
+        </table>
+
+        <attributes>
+            <basic name="nickname">
+                <column name="nickname" length="100" nullable="false"/>
+            </basic>
+
+            <basic name="passwordHash">
+                <column name="password_hash" length="200" nullable="false"/>
+            </basic>
+
+            <basic name="status">
+                <column name="status" length="50"/>
+                <enumerated>STRING</enumerated>
+            </basic>
+            <one-to-one name="detail" fetch="LAZY">
+                <cascade>
+                    <cascade-all/>
+                </cascade>
+            </one-to-one>
+
+            <embedded name="email"/>
+
+        </attributes>
+    </entity>
+
+    <embeddable class="tobyspring.splean.domain.shared.Email">
+        <attributes>
+            <basic name="address">
+                <column name="email_address" length="150" nullable="false"/>
+            </basic>
+        </attributes>
+    </embeddable>
+
+
 
     <embeddable class="tobyspring.splean.domain.member.Profile" access="FIELD">
         <attributes>
@@ -85,5 +88,7 @@
             </basic>
         </attributes>
     </embeddable>
+
+
 
 </entity-mappings>

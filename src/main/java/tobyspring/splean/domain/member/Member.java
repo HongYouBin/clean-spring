@@ -1,20 +1,17 @@
     package tobyspring.splean.domain.member;
 
-    import jakarta.persistence.CascadeType;
     import jakarta.persistence.Entity;
-    import jakarta.persistence.FetchType;
-    import jakarta.persistence.OneToOne;
     import lombok.AccessLevel;
     import lombok.Getter;
     import lombok.NoArgsConstructor;
     import lombok.ToString;
     import org.hibernate.annotations.NaturalId;
     import org.hibernate.annotations.NaturalIdCache;
-    import org.springframework.util.Assert;
     import tobyspring.splean.domain.AbstractEntity;
     import tobyspring.splean.domain.shared.Email;
 
     import static java.util.Objects.requireNonNull;
+    import static org.springframework.util.Assert.state;
 
     @Getter
     @Entity
@@ -34,14 +31,14 @@
         private MemberDetail detail;
 
         public void activate() {
-            Assert.state(this.status == MemberStatus.PENDING, "가입 대기중인 상태에서만 가입 완료가 가능합니다.");
+            state(this.status == MemberStatus.PENDING, "가입 대기중인 상태에서만 가입 완료가 가능합니다.");
 
             this.status = MemberStatus.ACTIVATE;
             detail.activate();
         }
 
         public void deactivate() {
-            Assert.state(this.status == MemberStatus.ACTIVATE, "가입이 완료된 상태에서만 탈퇴가 가능합니다.");
+            state(this.status == MemberStatus.ACTIVATE, "가입이 완료된 상태에서만 탈퇴가 가능합니다.");
 
             this.status = MemberStatus.DEACTIVATED;
             this.detail.deactivate();
@@ -60,10 +57,6 @@
             return member;
         }
 
-        public void changeNickname(String nickname) {
-            this.nickname = nickname;
-        }
-
         public boolean verifyPassword(String password, PasswordEncoder passwordEncoder) {
             return passwordEncoder.matches(password, this.passwordHash);
         }
@@ -73,6 +66,10 @@
         }
 
         public void updateInfo(MemberUpdateRequest memberUpdateRequest){
+//            state(this.getStatus() != MemberStatus.ACTIVATE, "member 상태가 activate여야 합니다.");
+            if(this.getStatus() != MemberStatus.ACTIVATE) {
+                throw new IllegalStateException("member 상태가 activate여야 합니다.");
+            }
             this.nickname = memberUpdateRequest.nickname();
             this.detail.updateInfo(memberUpdateRequest);
         }

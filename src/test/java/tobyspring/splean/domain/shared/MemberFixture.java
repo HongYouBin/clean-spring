@@ -1,5 +1,7 @@
 package tobyspring.splean.domain.shared;
 
+import org.springframework.test.util.ReflectionTestUtils;
+import tobyspring.splean.domain.member.Member;
 import tobyspring.splean.domain.member.MemberRegisterRequest;
 import tobyspring.splean.domain.member.PasswordEncoder;
 
@@ -25,5 +27,11 @@ public class MemberFixture {
             }
         };
 
+    }
+
+    public static Member createMember(long id) {
+        Member member = Member.register(createMemberRegisterRequest(), createPasswordEncoder());
+        ReflectionTestUtils.setField(member, "id", id);
+        return member;
     }
 }

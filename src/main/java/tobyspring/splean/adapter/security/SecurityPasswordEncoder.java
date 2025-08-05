@@ -1,10 +1,12 @@
 package tobyspring.splean.adapter.security;
 
+import org.springframework.context.annotation.Fallback;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import tobyspring.splean.domain.member.PasswordEncoder;
 
 @Component
+@Fallback
 public class SecurityPasswordEncoder implements PasswordEncoder {
     private final BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
 
